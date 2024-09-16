@@ -44,7 +44,7 @@ import { API } from './Global';
             if(signup.status == 200){
 
             alert(result.message)
-            // navigate("/");
+            navigate("/")
           }
           else{
             alert(result.message)
@@ -69,7 +69,6 @@ import { API } from './Global';
             onChange={formik.handleChange}
             name="userName"
             onBlur={formik.handleBlur} 
-            //here error & helpertext is Meterial UI feature word..
             error={formik.touched.userName && formik.errors.userName}
             helperText={formik.touched.userName && formik.errors.userName ? formik.errors.userName : null}/>
 

@@ -6,7 +6,7 @@ import { TextField, Button, Typography } from '@mui/material';
 import {API} from "./Global.js"
 
 function UpdateBlog() {
-  const [fileData, setFileData] = useState(null); // Renamed to avoid confusion
+  const [fileData, setFileData] = useState(null); 
   const { id } = useParams();
 
   useEffect(() => {
@@ -19,7 +19,7 @@ function UpdateBlog() {
         method: "GET"
       });
       const data = await response.json();
-      setFileData(data); // Store the fetched blog data
+      setFileData(data); 
     } catch (err) {
       alert(err.message);
     }
@@ -42,13 +42,13 @@ function UpdateBlogForm({ value, setValue }) {
     blogDiscription: Yup.string().required('Blog description is required'),
   });
 
-  // Formik hook for form handling
+ 
   const formik = useFormik({
     initialValues: {
-      blogDiscription: value?.blogDiscription || '', // Ensure value is defined
+      blogDiscription: value?.blogDiscription || '', 
     },
     validationSchema: validationSchema,
-    enableReinitialize: true, // Reinitialize form if the initialValues change
+    enableReinitialize: true, 
     onSubmit: async (values) => {
       const formData = new FormData();
       formData.append('blogDiscription', values.blogDiscription);
@@ -60,7 +60,7 @@ function UpdateBlogForm({ value, setValue }) {
       try {
         const response = await fetch(`${API}/blog/${value._id}`, {
           method: "PUT",
-          body: formData, // Pass formData directly
+          body: formData, 
         });
 
         const data = await response.json();

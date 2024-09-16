@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import { FaThumbsUp, FaThumbsDown, FaCommentDots } from "react-icons/fa"; // Importing Icons
-import './App.css'; // Add this for custom styles
+import { FaThumbsUp, FaThumbsDown, FaCommentDots } from "react-icons/fa"; 
+import './App.css'; 
 import { useNavigate } from "react-router-dom";
 import {API} from "./Global.js"
 
 function MyBlogs() {
   const [blogData, setBlogData] = useState([]);
-  const [newCommand, setNewCommand] = useState(""); // For new comments
-  const [replyCommand, setReplyCommand] = useState({}); // For reply inputs
+  const [newCommand, setNewCommand] = useState(""); 
+  const [replyCommand, setReplyCommand] = useState({}); 
   const [showCommands, setShowCommands] = useState({});
-  const [showReplies, setShowReplies] = useState({}); // This manages reply visibility
+  const [showReplies, setShowReplies] = useState({}); 
 
   let userId = localStorage.getItem("userId")
  
@@ -26,15 +26,15 @@ function MyBlogs() {
       });
       const res = await data.json();
   
-      // Ensure the response is an array before setting it in state
+     
       if (Array.isArray(res)) {
         setBlogData([...res]);
       } else {
-        setBlogData([]); // Set to an empty array if the response is not an array
+        setBlogData([]); 
       }
     } catch (error) {
       console.error("Error fetching blogs:", error);
-      setBlogData([]); // Handle error by setting blogData to an empty array
+      setBlogData([]); 
     }
   };
   
@@ -49,7 +49,7 @@ function MyBlogs() {
   const toggleReplies = (commandId) => {
     setShowReplies((prevState) => ({
       ...prevState,
-      [commandId]: !prevState[commandId], // Toggles replies visibility
+      [commandId]: !prevState[commandId], 
     }));
   };
 
@@ -73,7 +73,7 @@ function MyBlogs() {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-        userId: userId, // Sample userId
+        userId: userId, 
       }),
     });
     fetchBlogs();
@@ -89,10 +89,10 @@ function MyBlogs() {
       },
       body: JSON.stringify({
         command: newCommand,
-        commandBy: userId, // Sample userId
+        commandBy: userId, 
       }),
     });
-    setNewCommand(""); // Clear input after posting
+    setNewCommand(""); 
     fetchBlogs();
   };
 
@@ -105,11 +105,11 @@ function MyBlogs() {
       },
       body: JSON.stringify({
         command: replyCommand[parentCommandId],
-        commandBy: userId, // Sample userId
-        parentCommandId: parentCommandId, // The ID of the parent command
+        commandBy: userId, 
+        parentCommandId: parentCommandId, 
       }),
     });
-    setReplyCommand((prevState) => ({ ...prevState, [parentCommandId]: "" })); // Clear input after posting
+    setReplyCommand((prevState) => ({ ...prevState, [parentCommandId]: "" })); 
     fetchBlogs();
   };
 
@@ -121,7 +121,7 @@ function MyBlogs() {
           <div key={reply._id} className="reply-box">
             <div className="comment-header">
               <img
-                src={`https://via.placeholder.com/40`}
+                src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReNr2tV6uuvmORZKBUeu2Oxf9iH-wdYouxVw&"}
                 alt="profile"
                 className="profile-image"
               />
@@ -248,7 +248,7 @@ function MyBlogs() {
                         <div key={command._id} className="command-box">
                           <div className="comment-header">
                             <img
-                              src={`https://via.placeholder.com/40`} // Placeholder for profile image
+                              src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReNr2tV6uuvmORZKBUeu2Oxf9iH-wdYouxVw&"} 
                               alt="profile"
                               className="profile-image"
                             />
@@ -309,7 +309,7 @@ function MyBlogs() {
                     {/* Input for New Command */}
                     <div className="new-comment-input">
                       <img
-                        src={`https://via.placeholder.com/40`}
+                        src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReNr2tV6uuvmORZKBUeu2Oxf9iH-wdYouxVw&"}
                         alt="profile"
                         className="profile-image"
                       />

@@ -12,12 +12,12 @@ const CreateBlog = () => {
 
   const navigate = useNavigate()
 
-  // Validation schema using Yup
+  
   const validationSchema = Yup.object({
     blogDiscription: Yup.string().required('Blog description is required'),
   });
 
-  // Formik hook for form handling
+ 
   const formik = useFormik({
     initialValues: {
       blogDiscription: '',
@@ -34,7 +34,7 @@ const CreateBlog = () => {
       try {
         const response = await fetch(`${API}/blog/addBlog`, {
           method: "POST",
-          body: formData, // Pass formData directly
+          body: formData, 
         });
 
         const data = await response.json();
